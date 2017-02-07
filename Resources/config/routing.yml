@@ -1,0 +1,16 @@
+
+fgms_partner_store_install:
+    path: /install
+    defaults:
+        _controller: FgmsPartnerStoreBundle:Install:install
+
+fgms_partner_store_auth:
+    path: /auth
+    defaults:
+        _controller: FgmsPartnerStoreBundle:Install:auth
+
+fgms_partner_store_homepage:
+    path: /
+    defaults:
+        _controller: FgmsPartnerStoreBundle:Default:home
+

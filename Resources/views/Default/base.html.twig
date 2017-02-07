@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		{% block head %}
+		<meta charset="UTF-8">
+		<title>{% block title %}Email Inquiries - {{title}}{% endblock %}</title>
+		<script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
+		{% block shopify_init %}
+		<script type="text/javascript">
+			ShopifyApp.init({
+				{% block shopify_init_settings %}
+				apiKey: {{api_key|json_encode()|raw}},
+				shopOrigin: 'https://' + {{store.name|json_encode()|raw}} + '.myshopify.com',
+				{% endblock %}
+				forceRedirect: false
+			});
+		</script>
+		{% endblock %}
+		{% block shopify_behavior %}
+		<script type="text/javascript">
+			ShopifyApp.ready(function () {
+				ShopifyApp.Bar.initialize({
+					{% block shopify_behavior_settings %}
+					title: {{title|json_encode()|raw}},
+					{% endblock %}
+				});
+			});
+		</script>
+		{% endblock %}
+		{% endblock %}
+		{% block css %}
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		{% endblock %}
+		{% block js %}
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% block content %}{% endblock %}
+		{% endblock %}
+	</body>
+</html>

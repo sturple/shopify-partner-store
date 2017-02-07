@@ -1,0 +1,22 @@
+{
+    "name": "sturple/shopify-partner-store",
+    "description": "Shopify Partner Store Bundle (Embed)",
+    "type": "symfony-bundle",
+    "keywords": ["shopify", "oauth","embed", "symfony", "Partner Store"],
+    "homepage": "https://github.com/sturple/shopify-partner-store",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shawn Turple",
+            "email": "shawn@turple.ca"
+        }
+    ],
+    "require": {
+        "sturple/common" : "~0.0"
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Fgms/PartnerStoreBundle",
+    "autoload" : {
+        "psr-0" : {"Fgms\\PartnerStoreBundle" : ""}
+    }
+}
