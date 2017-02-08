@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class FgmsEmailInquiriesExtension extends Extension
+class FgmsPartnerStoreExtension extends Extension
 {
     /**
      * {@inheritdoc}

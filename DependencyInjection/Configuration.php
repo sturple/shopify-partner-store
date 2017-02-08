@@ -25,12 +25,9 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $rootNode
             ->children()
-                ->scalarNode('api_key')
-                    ->isRequired()
-                ->end()
-                ->scalarNode('secret')
-                    ->isRequired()
-                ->end()
+                ->scalarNode('api_key')->isRequired()->end()
+                ->scalarNode('secret')->isRequired()->end()
+                ->scalarNode('scope')->end()
             ->end();
 
         return $treeBuilder;

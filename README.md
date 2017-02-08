@@ -7,7 +7,7 @@
 ```json
 {
    "require": {
-       "sturple/shopify-partnerstore": "dev-master"
+       "sturple/shopify-partner-store": "dev-master"
    }
 }
 
@@ -53,6 +53,7 @@ The bundle specifies the following routes which must be known to configure as a 
 
 - **Install:** `/install`
 - **OAuth:** `/auth`
+- **Support:** `/suport`
 - **Home:** `/`
 
 To setup a Shopify proxy for form submission point the proxy at `/submit`.  The unique code for the form to submit to should be appended to the Shopify proxy link.

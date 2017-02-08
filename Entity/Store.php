@@ -32,10 +32,21 @@ class Store
      */
     private $status = 'active';
 
-    /**
-     * @ORM\OneToMany(targetEntity="Form",mappedBy="store")
-     */
-    private $forms;
+     /**
+     * @ORM\OneToOne(targetEntity="Configuration",mappedBy="store")
+     */   
+    private $configuration;
+    
+     /**
+     * @ORM\OneToOne(targetEntity="PageContent",mappedBy="store")
+     */   
+    private $pageContent;    
+
+     /**
+     * @ORM\OneToMany(targetEntity="Announcements",mappedBy="store")
+     */   
+    private $announcements;
+    
     /**
      * Constructor
      */
@@ -125,4 +136,84 @@ class Store
     {
         return $this->status;
     }
+    
+    /**
+     * Set configuration
+     *
+     * @param \Fgms\PartnerStoreBundle\Entity\Configuration $configuration
+     *
+     * @return Store
+     */
+    public function setConfiguration(\Fgms\PartnerStoreBundle\Entity\Configuration $configuration)
+    {
+        $this->configuration = $configuration;
+        return $this;
+    }
+
+    /**
+     * Get configuration
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
+    }
+    
+    /**
+     * Set pageContent
+     *
+     * @param \Fgms\PartnerStoreBundle\Entity\PageContent $pageContent
+     *
+     * @return Store
+     */
+    public function setPageContent(\Fgms\PartnerStoreBundle\Entity\PageContent $pageContent)
+    {
+        $this->pageContent = $pageContent;
+        return $this;
+    }
+
+    /**
+     * Get pageContent
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPageContent()
+    {
+        return $this->pageContent;
+    }
+    
+    /**
+     * Add announcements
+     *
+     * @param \Fgms\PartnerStoreBundle\Entity\Announcements $announcements
+     *
+     * @return Store
+     */
+    public function addAnnouncements(\Fgms\PartnerStoreBundle\Entity\Announcements $announcements)
+    {
+        $this->announcements[] = $announcements;
+        return $this;
+    }
+    /**
+     * Remove form
+     *
+     * @param \Fgms\PartnerStoreBundle\Entity\Announcements $announcements
+     */
+    /*
+    public function removeForm(\Fgms\PartnerStoreBundle\Entity\Announcements $announcements)
+    {
+        $this->announcements->removeElement($announcements);
+    }*/
+    
+    /**
+     * Get forms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnnouncements()
+    {
+        return $this->announcements;
+    }
+    
 }

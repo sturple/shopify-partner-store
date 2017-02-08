@@ -21,7 +21,7 @@ class InstallController extends BaseController
             'https://%s/admin/oauth/authorize?client_id=%s&scope=%s&redirect_uri=%s',
             $addr,
             rawurlencode($this->getApiKey()),
-            rawurlencode('read_content'),   //  This is just a dummy since this can't be blank apparently
+            rawurlencode($this->getScope()),
             rawurlencode($return_url)
         );
         return $this->redirect($install_url);

@@ -86,6 +86,12 @@ abstract class BaseController extends \Symfony\Bundle\FrameworkBundle\Controller
         return $this->container->getParameter('fgms_partner_store.config');
     }
 
+    protected function getScope()
+    {
+        $scope = $this->getConfig()['scope'];
+        return empty($scope) ? 'read_content' : $scope;
+    }
+    
     protected function getApiKey()
     {
         return $this->getConfig()['api_key'];

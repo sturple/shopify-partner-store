@@ -1,6 +1,1 @@
 services:
-    fgms_partner_store.to_https:
-        class: Fgms\PartnerStoreBundle\EventListener\ToHttpsListener
-        arguments: ["@router"]
-        tags:
-            -   { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
