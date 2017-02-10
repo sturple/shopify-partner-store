@@ -1,0 +1,27 @@
+{% extends '@fgms_common/base.html.twig' %}
+{% set title = 'Partner Store Edit' %}
+
+{% block content %}
+    
+<h1>Partner Store Edit</h1>
+
+<div>
+    <div style="text-align: right">
+       {# {{form_widget(form.save,{'attr' : {'class' : 'btn btn-success btn-lg'}})}}#}
+        <a class="btn btn-primary btn-lg" style="margin-right: 12px;" href="{{path('fgms_partner_store_homepage')}}"><i class="fa fa-hand-o-left" aria-hidden="true"></i> </a>
+    </div>
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#tab_company" aria-controls="tab_company" role="tab" data-toggle="tab">Company </a></li>
+      <li role="presentation"><a href="#tab_content" aria-controls="tab_content" role="tab" data-toggle="tab">Page Content</a></li>
+      <li role="presentation"><a href="#tab_announcements" aria-controls="tab_announcements" role="tab" data-toggle="tab">Announcements</a></li>
+    </ul>
+    <div class="tab-content" style="padding-top: 24px;">
+		<div role="tabpanel" class="tab-pane active" id="tab_company">{% include 'FgmsPartnerStoreBundle:App:forms/company-form.html.twig' %}</div>
+        <div role="tabpanel" class="tab-pane" id="tab_content">{% include 'FgmsPartnerStoreBundle:App:forms/content-form.html.twig' %}</div>
+        <div role="tabpanel" class="tab-pane" id="tab_announcements">{% include 'FgmsPartnerStoreBundle:App:forms/announcements-form.html.twig' %}</div>
+    </div>
+</div>
+	{{dump(company)}}
+{% endblock %}

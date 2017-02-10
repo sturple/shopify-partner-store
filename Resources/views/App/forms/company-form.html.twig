@@ -1,0 +1,11 @@
+<h2>Company Settings</h2>
+{% if company_form %}    
+    {{ form_start(company_form) }}
+    
+    {{ form_widget(company_form) }}
+    <div style="text-align: right">
+      {{form_widget(company_form.save,{'attr' : {'class' : 'btn btn-success btn-lg'}})}}
+       
+    </div>
+    {{ form_end(company_form)}}
+{% endif %}

@@ -506,7 +506,7 @@ class PageContent
      *
      * @param \Fgms\PartnerStoreBundle\Entity\Store $store
      *
-     * @return Configuration
+     * @return PageContent
      */
     public function setStore(\Fgms\PartnerStoreBundle\Entity\Store $store = null)
     {

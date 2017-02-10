@@ -116,8 +116,9 @@ abstract class BaseController extends \Symfony\Bundle\FrameworkBundle\Controller
         return $doctrine->getRepository(\Fgms\PartnerStoreBundle\Entity\Store::class);
     }
 
-    protected function getStoreFromRequest(\Symfony\Component\HttpFoundation\Request $request)
+    protected function getStoreFromRequest()
     {
+        $request = $this->get('request_stack')->getCurrentRequest();    
         $name = $this->getStoreNameFromRequest($request);
         $repo = $this->getStoreRepository();
         $retr = $repo->findOneByName($name);

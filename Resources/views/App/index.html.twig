@@ -1,0 +1,39 @@
+{% extends '@fgms_common/base.html.twig' %}
+{% set title = 'Home' %}
+
+{% block content %}
+    
+<h1>Partner Stores</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Company</th>				
+				<th>URL</th>
+				<th>Title</th>
+				<th>Description</th>				
+				<th>Status</th>
+				<th>Edit</th>
+				<th>View</th>
+				{#<th>Statistics</th>#}				
+			</tr>
+		</thead>
+		<tbody>
+			{% for company in companies%}
+			<tr>
+				<td>{{company.title}}</td>
+				<td>{{company.permalink}}</td>				
+				<td>{{company.title}}</td>
+				<td>{{company.summary}}</td>
+				<td>{{company.status}}</td>
+				<td><a href="{{path('fgms_partner_store_edit', {id : company.id})}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
+				<td><a href="/{{company.permalink}}" target="_blank" class="btn btn-primary"><i class="fa fa-eye"></i> View</a></td>
+				{# <td><a href="/shopify/{{lp.type|default('ppc')}}/{{lp.id}}/" class="btn btn-primary"><i class="fa fa-line-chart"></i> Stats</a></td> #}
+				
+			</tr>	
+			{% endfor %}
+		</tbody>
+	</table>	
+	<div class="well" style="margin-top: 24px;">
+		<a href="{{path('fgms_partner_store_edit', {id : 0})}}" class="btn btn-success btn-lg">New Partner Store</a>		
+	</div>
+{% endblock %}

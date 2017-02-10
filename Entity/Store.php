@@ -33,9 +33,9 @@ class Store
     private $status = 'active';
 
      /**
-     * @ORM\OneToOne(targetEntity="Configuration",mappedBy="store")
+     * @ORM\OneToOne(targetEntity="Company",mappedBy="store")
      */   
-    private $configuration;
+    private $company;
     
      /**
      * @ORM\OneToOne(targetEntity="PageContent",mappedBy="store")
@@ -138,26 +138,26 @@ class Store
     }
     
     /**
-     * Set configuration
+     * Set company
      *
-     * @param \Fgms\PartnerStoreBundle\Entity\Configuration $configuration
+     * @param \Fgms\PartnerStoreBundle\Entity\Company $company
      *
      * @return Store
      */
-    public function setConfiguration(\Fgms\PartnerStoreBundle\Entity\Configuration $configuration)
+    public function setCompany(\Fgms\PartnerStoreBundle\Entity\Company $company)
     {
-        $this->configuration = $configuration;
+        $this->company = $company;
         return $this;
     }
 
     /**
-     * Get configuration
+     * Get company
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getConfiguration()
+    public function getCompany()
     {
-        return $this->configuration;
+        return $this->company;
     }
     
     /**

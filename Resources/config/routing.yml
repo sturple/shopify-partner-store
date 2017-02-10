@@ -14,3 +14,14 @@ fgms_partner_store_homepage:
     defaults:
         _controller: FgmsPartnerStoreBundle:Default:home
 
+fgms_partner_store_edit:
+    path: /edit/{id}
+    defaults:
+        _controller: FgmsPartnerStoreBundle:Default:adminStoreEdit
+    requirements:
+        id: "\\d+"
+        
+fgms_partner_store_public:
+    path: /edit/{permalink}
+    defaults:
+        _controller: FgmsPartnerStoreBundle:Default:proxyStoreViewAction

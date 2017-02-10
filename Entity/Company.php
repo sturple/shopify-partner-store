@@ -5,12 +5,12 @@ namespace Fgms\PartnerStoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Configuration
+ * Companyy
  *
- * @ORM\Table(name="shopify_partner_configuration")
- * @ORM\Entity(repositoryClass="Fgms\PartnerStoreBundle\Repository\ConfigurationRepository")
+ * @ORM\Table(name="shopify_partner_company")
+ * @ORM\Entity(repositoryClass="Fgms\PartnerStoreBundle\Repository\CompanyRepository")
  */
-class Configuration
+class Company
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class Configuration
      *
      * @ORM\Column(name="status", type="string", length=100)
      */
-    private $status;
+    private $status = 'active';
 
     /**
      * @var \DateTime
@@ -38,7 +38,7 @@ class Configuration
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updateDate", type="datetime")
+     * @ORM\Column(name="updateDate", type="datetime", nullable=true)
      */
     private $updateDate;
 
@@ -66,110 +66,110 @@ class Configuration
     /**
      * @var string
      *
-     * @ORM\Column(name="permalink", type="string", length=255)
+     * @ORM\Column(name="permalink", type="string", length=255, nullable=true)
      */
     private $permalink;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company", type="string", length=255)
+     * @ORM\Column(name="company", type="string", length=255, nullable=true)
      */
     private $company;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255, nullable=true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneToll", type="string", length=255)
+     * @ORM\Column(name="phoneToll", type="string", length=255, nullable=true)
      */
     private $phoneToll;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneFax", type="string", length=255)
+     * @ORM\Column(name="phoneFax", type="string", length=255, nullable=true)
      */
     private $phoneFax;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneCell", type="string", length=255)
+     * @ORM\Column(name="phoneCell", type="string", length=255, nullable=true)
      */
     private $phoneCell;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address1", type="string", length=255)
+     * @ORM\Column(name="address1", type="string", length=255, nullable=true)
      */
     private $address1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address2", type="string", length=255)
+     * @ORM\Column(name="address2", type="string", length=255, nullable=true)
      */
     private $address2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="province", type="string", length=255)
+     * @ORM\Column(name="province", type="string", length=255, nullable=true)
      */
     private $province;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postal", type="string", length=255)
+     * @ORM\Column(name="postal", type="string", length=255, nullable=true)
      */
     private $postal;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=255)
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
     private $country;
 
     /**
-     * @ORM\OneToOne(targetEntity="Store",inversedBy="configuration")
+     * @ORM\OneToOne(targetEntity="Store",inversedBy="company")
      */
     private $store;    
     
@@ -189,7 +189,7 @@ class Configuration
      *
      * @param string $status
      *
-     * @return Configuration
+     * @return Company
      */
     public function setStatus($status)
     {
@@ -213,12 +213,11 @@ class Configuration
      *
      * @param \DateTime $createDate
      *
-     * @return Configuration
+     * @return Company
      */
-    public function setCreateDate($createDate)
+    public function setCreateDate($createDate = null)
     {
-        $this->createDate = $createDate;
-
+        $this->createDate = empty($createDate)  ? new \DateTime("now") :$createDate ;
         return $this;
     }
 
@@ -237,11 +236,12 @@ class Configuration
      *
      * @param \DateTime $updateDate
      *
-     * @return Configuration
+     * @return Company
      */
-    public function setUpdateDate($updateDate)
+    public function setUpdateDate()
     {
-        $this->updateDate = $updateDate;
+        $this->updateDate =  new \DateTime("now");
+        
 
         return $this;
     }
@@ -261,7 +261,7 @@ class Configuration
      *
      * @param string $title
      *
-     * @return Configuration
+     * @return Company
      */
     public function setTitle($title)
     {
@@ -285,7 +285,7 @@ class Configuration
      *
      * @param string $summary
      *
-     * @return Configuration
+     * @return Company
      */
     public function setSummary($summary)
     {
@@ -309,7 +309,7 @@ class Configuration
      *
      * @param string $template
      *
-     * @return Configuration
+     * @return Company
      */
     public function setTemplate($template)
     {
@@ -333,7 +333,7 @@ class Configuration
      *
      * @param string $permalink
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPermalink($permalink)
     {
@@ -357,7 +357,7 @@ class Configuration
      *
      * @param string $company
      *
-     * @return Configuration
+     * @return Company
      */
     public function setCompany($company)
     {
@@ -381,7 +381,7 @@ class Configuration
      *
      * @param string $firstName
      *
-     * @return Configuration
+     * @return Company
      */
     public function setFirstName($firstName)
     {
@@ -405,7 +405,7 @@ class Configuration
      *
      * @param string $lastName
      *
-     * @return Configuration
+     * @return Company
      */
     public function setLastName($lastName)
     {
@@ -429,7 +429,7 @@ class Configuration
      *
      * @param string $phone
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPhone($phone)
     {
@@ -453,7 +453,7 @@ class Configuration
      *
      * @param string $phoneToll
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPhoneToll($phoneToll)
     {
@@ -477,7 +477,7 @@ class Configuration
      *
      * @param string $phoneFax
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPhoneFax($phoneFax)
     {
@@ -501,7 +501,7 @@ class Configuration
      *
      * @param string $phoneCell
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPhoneCell($phoneCell)
     {
@@ -525,7 +525,7 @@ class Configuration
      *
      * @param string $email
      *
-     * @return Configuration
+     * @return Company
      */
     public function setEmail($email)
     {
@@ -549,7 +549,7 @@ class Configuration
      *
      * @param string $address1
      *
-     * @return Configuration
+     * @return Company
      */
     public function setAddress1($address1)
     {
@@ -573,7 +573,7 @@ class Configuration
      *
      * @param string $address2
      *
-     * @return Configuration
+     * @return Company
      */
     public function setAddress2($address2)
     {
@@ -597,7 +597,7 @@ class Configuration
      *
      * @param string $city
      *
-     * @return Configuration
+     * @return Company
      */
     public function setCity($city)
     {
@@ -621,7 +621,7 @@ class Configuration
      *
      * @param string $province
      *
-     * @return Configuration
+     * @return Company
      */
     public function setProvince($province)
     {
@@ -645,7 +645,7 @@ class Configuration
      *
      * @param string $postal
      *
-     * @return Configuration
+     * @return Company
      */
     public function setPostal($postal)
     {
@@ -669,7 +669,7 @@ class Configuration
      *
      * @param string $country
      *
-     * @return Configuration
+     * @return Company
      */
     public function setCountry($country)
     {
@@ -693,7 +693,7 @@ class Configuration
      *
      * @param \Fgms\PartnerStoreBundle\Entity\Store $store
      *
-     * @return Configuration
+     * @return Company
      */
     public function setStore(\Fgms\PartnerStoreBundle\Entity\Store $store = null)
     {
